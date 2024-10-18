@@ -1,4 +1,6 @@
 # capemon: The monitor DLL for CAPE: Config And Payload Extraction (https://github.com/kevoreilly/CAPEv2).
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbritz758-rgb%2Fcapemon.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbritz758-rgb%2Fcapemon?ref=badge_shield)
+
 
 Much of the functionality of CAPE is contained within the monitor; the CAPE debugger, extracted payloads, process dumps and import reconstruction are implemented within capemon. CAPE's loader is also part of this project.
 
@@ -17,3 +19,6 @@ There are three main files that define the hooks implemented in capemon:
 1. [hooks.h](./hooks.h). This file contains the definition of the hook (`HOOKDEF`) using Windows [SAL](https://learn.microsoft.com/en-us/cpp/code-quality/understanding-sal?view=msvc-170) notation. That is, `HOOKDEF(ReturnValue, CallingConvention, ApiName, _ParameterAnnotation_ ParameterName)`.
 2. [hooks.c](./hooks.c). This file defines the hooks that will be employed depending upon the configuration selected when submitting the analysis. Please notice there are several `hook_t` arrays. For example, `hook_t full_hooks[]`,`hook_t min_hooks[]` or `hook_t office_hooks[]`, among others. You should add the hooks you want capemon to perform in the corresponding array. By default, `full_hooks` is executed (so probably you want to add your hooks there). The hooks must be added using the following naming pattern: `HOOK(dllname, ApiName)`.
 3. [hook_{category}.c](./hook_process.c) _(Link is just an example, in this case hook_process.c)_. This set of files is where the implementation of each hook is defined. When defining the behavior of a given hook, you must copy the corresponding definition from the `hooks.h` file and write the code. Remember you can call the original function with `Old_{ApiName}` .
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbritz758-rgb%2Fcapemon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbritz758-rgb%2Fcapemon?ref=badge_large)
